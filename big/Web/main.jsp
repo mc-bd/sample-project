@@ -21,7 +21,7 @@ ul,ol{
 }
 /* Header CSS */
 header{
-	width: 800px;
+	width: 920px;
 	height: 150px;
 	margin: 0 auto;
 	background: red;
@@ -76,6 +76,7 @@ footer {
 		<a href="main.big?view=product">PRODUCT</a>
 		<a href="main.big?view=rgraph">RGraph</a>
 		<a href="main.big?view=highcharts">HighCharts</a>
+		<a href="main.big?view=weather">Weather</a>
 	</div>
 	</c:otherwise>
 </c:choose>
