@@ -50,8 +50,7 @@ select TINCOME from BD_MONINCOMESAVING where MINCOME=1;
 select TSPEND from BD_MONINCOMESAVING where MINCOME=1;
 select (TINCOME-TSPEND) from BD_MONINCOMESAVING where MINCOME=1;
 
-
-
+-- 저축 탭 챠트 부분 쿼리문 없이 하이챠트 따로 띄워도 ok
 -----------------------------------------------------------------------------------------------
 
 -- 분석 1  
