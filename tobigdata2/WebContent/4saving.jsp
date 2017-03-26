@@ -59,9 +59,9 @@ Highcharts.chart('container', {
         name: 'Browser share',
         innerSize: '50%',
         data: [
-            ['수입', 500],
-            ['지출', 400],
-            ['저축', 100],
+            ['수입', 200],
+            ['지출', 150],
+            ['저축', 500],
             {
                 name: 'Proprietary or Undetectable',
                 y: 0.2,

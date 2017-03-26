@@ -67,7 +67,7 @@ Highcharts.chart('container', {
 
     series: [{
         name: '±Ù·Î¼Òµæ',
-        data: [5, 5, 5, 5, 5],
+        data: [2, 2, 2, 2, 2],
         stack: 'male'
     }, {
         name: 'ÀÌÀÚ¼Òµæ',
