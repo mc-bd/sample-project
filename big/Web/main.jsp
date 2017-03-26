@@ -19,6 +19,7 @@ a{
 ul,ol{
 	list-style: none;
 }
+
 /* Header CSS */
 header{
 	width: 920px;
