@@ -42,7 +42,7 @@ select INTEREST_INCOME from BD_MONINCOMESAVING where MINCOME=1;
 -----------------------------------------------------------------------------------------------
 
 -- 지출 탭 테이블, 챠트 부분
-select RESIDENTAL, MOBILE, TRANSPORT, DAILYSUP, RESTAURENT, GROCERY, COFFEE, ALCOHOL, FINANCE, HEALTH, CLOTHING, BEAUTY, EDUCATION, CULTURE, SPORTS, TRAVEL, TSPEND from BD_MONSPEND where MSPEND=1;
+select HOUSING, TRANSPORTATION, COMMUNICATION, SUPPLIES, EATOUT, FOOD, SOJU, MEDICAL, CLOTHING, EDUCATION, ENTERTAINMENT, ETC  from BD_MONSPEND where MSPEND=1;
 -----------------------------------------------------------------------------------------------
 
 -- 저축 탭 테이블, 챠트 부분
@@ -56,36 +56,47 @@ select (TINCOME-TSPEND) from BD_MONINCOMESAVING where MINCOME=1;
 -- 분석 1  
 -- 소득별 지출항목	개인 VS 통계청
 
-select level,avg(CHACHACHA.food),avg(CHACHACHA.soju),avg(CHACHACHA.clothing),avg(CHACHACHA.housing),avg(CHACHACHA.supplies),avg(CHACHACHA.medical),avg(CHACHACHA.transportation),avg(CHACHACHA.communication),avg(CHACHACHA.entertainment),avg(CHACHACHA.education),avg(CHACHACHA.eatout),avg(CHACHACHA.etc) from CHACHACHA group by level having level=100
+select 
+HOUSING,
+TRANSPORTATION,
+COMMUNICATION,
+SUPPLIES,
+EATOUT,
+FOOD,
+SOJU,
+MEDICAL,
+CLOTHING,
+EDUCATION,
+ENTERTAINMENT,
+ETC from BD_MONSPEND where MSPEND=1;
 
-select level,avg(CHACHACHA.food),avg(CHACHACHA.soju),avg(CHACHACHA.clothing),avg(CHACHACHA.housing),avg(CHACHACHA.supplies),avg(CHACHACHA.medical),avg(CHACHACHA.transportation),avg(CHACHACHA.communication),avg(CHACHACHA.entertainment),avg(CHACHACHA.education),avg(CHACHACHA.eatout),avg(CHACHACHA.etc) from CHACHACHA group by level having level=200
 
-select level,avg(CHACHACHA.food),avg(CHACHACHA.soju),avg(CHACHACHA.clothing),avg(CHACHACHA.housing),avg(CHACHACHA.supplies),avg(CHACHACHA.medical),avg(CHACHACHA.transportation),avg(CHACHACHA.communication),avg(CHACHACHA.entertainment),avg(CHACHACHA.education),avg(CHACHACHA.eatout),avg(CHACHACHA.etc) from CHACHACHA group by level having level=300
-
-select level,avg(CHACHACHA.food),avg(CHACHACHA.soju),avg(CHACHACHA.clothing),avg(CHACHACHA.housing),avg(CHACHACHA.supplies),avg(CHACHACHA.medical),avg(CHACHACHA.transportation),avg(CHACHACHA.communication),avg(CHACHACHA.entertainment),avg(CHACHACHA.education),avg(CHACHACHA.eatout),avg(CHACHACHA.etc) from CHACHACHA group by level having level=400
-
-select level,avg(CHACHACHA.food),avg(CHACHACHA.soju),avg(CHACHACHA.clothing),avg(CHACHACHA.housing),avg(CHACHACHA.supplies),avg(CHACHACHA.medical),avg(CHACHACHA.transportation),avg(CHACHACHA.communication),avg(CHACHACHA.entertainment),avg(CHACHACHA.education),avg(CHACHACHA.eatout),avg(CHACHACHA.etc) from CHACHACHA group by level having level=500
-
-select level,avg(CHACHACHA.food),avg(CHACHACHA.soju),avg(CHACHACHA.clothing),avg(CHACHACHA.housing),avg(CHACHACHA.supplies),avg(CHACHACHA.medical),avg(CHACHACHA.transportation),avg(CHACHACHA.communication),avg(CHACHACHA.entertainment),avg(CHACHACHA.education),avg(CHACHACHA.eatout),avg(CHACHACHA.etc) from CHACHACHA group by level having level=600
-
-select level,avg(CHACHACHA.food),avg(CHACHACHA.soju),avg(CHACHACHA.clothing),avg(CHACHACHA.housing),avg(CHACHACHA.supplies),avg(CHACHACHA.medical),avg(CHACHACHA.transportation),avg(CHACHACHA.communication),avg(CHACHACHA.entertainment),avg(CHACHACHA.education),avg(CHACHACHA.eatout),avg(CHACHACHA.etc) from CHACHACHA group by level having level=700
+select
+level,
+avg(CHACHACHA.housing) HOUSING,
+avg(CHACHACHA.transportation) TRANSPORTATION,
+avg(CHACHACHA.communication) COMMUNICATION,
+avg(CHACHACHA.supplies) SUPPLIES,
+avg(CHACHACHA.eatout) EATOUT,
+avg(CHACHACHA.food) FOOD,
+avg(CHACHACHA.soju) SOJU,
+avg(CHACHACHA.medical) MEDICAL,
+avg(CHACHACHA.clothing) CLOTHING,
+avg(CHACHACHA.education) EDUCATION,
+avg(CHACHACHA.entertainment) ENTERTAINMENT,
+avg(CHACHACHA.etc) ETC from CHACHACHA group by level having level=200;
 
 
 -- 분석 2
+-- 소득별 저축항목	개인 VS 통계청
 
-select level,avg(CHACHACHA.consumption),avg(CHACHACHA.nonconsumption),avg(surplus) from CHACHACHA group by level having level=100
+select
+TINCOME,
+TSPEND,
+(TINCOME-TSPEND) from BD_MONINCOMESAVING where MINCOME=1;
 
-select level,avg(CHACHACHA.consumption),avg(CHACHACHA.nonconsumption),avg(surplus) from CHACHACHA group by level having level=200
-
-select level,avg(CHACHACHA.consumption),avg(CHACHACHA.nonconsumption),avg(surplus) from CHACHACHA group by level having level=300
-
-select level,avg(CHACHACHA.consumption),avg(CHACHACHA.nonconsumption),avg(surplus) from CHACHACHA group by level having level=400
-
-select level,avg(CHACHACHA.consumption),avg(CHACHACHA.nonconsumption),avg(surplus) from CHACHACHA group by level having level=500
-
-select level,avg(CHACHACHA.consumption),avg(CHACHACHA.nonconsumption),avg(surplus) from CHACHACHA group by level having level=600
-
-select level,avg(CHACHACHA.consumption),avg(CHACHACHA.nonconsumption),avg(surplus) from CHACHACHA group by level having level=700
-
-
-
+select 
+level,
+avg(CHACHACHA.consumption),
+avg(CHACHACHA.nonconsumption),
+avg(surplus) from CHACHACHA group by level having level=200;
