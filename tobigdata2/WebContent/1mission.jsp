@@ -26,13 +26,13 @@ Highcharts.chart('container', {
         type: 'area'
     },
     title: {
-        text: 'Á¾Àãµ· ¸ðÀ¸±â ¹Ì¼Ç'
+        text: 'Your Seed Money'
     },
     subtitle: {
         text: '±â°£º° ´©Àû´Þ¼º·ü'
     },
     xAxis: {
-        categories: ['2016.03', '2016.05', '2016.07',  '2016.09', '2016.11', '2017.01', '2017.03'],
+        categories: ['2016.06', '2016.08', '2016.10',  '2016.12', '2017.01', '2017.02', '2017.03'],
         tickmarkPlacement: 'on',
         title: {
             enabled: false
@@ -59,24 +59,27 @@ Highcharts.chart('container', {
         }
     },
     series: [{
-        name: 'America',
-        data: [95, 81, 82, 78, 70, 65, 61]
+        name: 'ÀÜ¿©À²',
+        data: [90, 70, 50, 30, 20, 10, 0]
     }, {
-        name: 'Europe',
-        data: [5, 12, 18, 20, 30, 35, 39]
+        name: '´©Àû·ü',
+        data: [10, 30, 50, 70, 80, 90, 100]
     }]
 });
 		
 		//End HighCharts ...
 		
 	};
-	$.ajax({
-		url:'mission',
-		dataType:'json',
-		success:function(data){
-			display (data);
-		}
-	});
+	
+	display ('');
+	
+// 	$.ajax({
+// 		url:'mission',
+// 		dataType:'json',
+// 		success:function(data){
+// 			display (data);
+// 		}
+// 	});
 });
 </script>
 </head>
