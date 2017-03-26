@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 <style>
 #container{
 	min-width: 310px;
@@ -22,55 +21,57 @@ $(document).ready(function(){
 		
 		// Start HighCharts ...
 		
-		Highcharts.chart('container', {
+Highcharts.chart('container', {
     chart: {
-        type: 'column'
+        type: 'area'
     },
     title: {
-        text: 'Browser market shares. January, 2015 to May, 2015'
+        text: '종잣돈 모으기 미션'
     },
     subtitle: {
-        text: 'Click the columns to view versions. Source: <a href="http://netmarketshare.com">netmarketshare.com</a>.'
+        text: '기간별 누적달성률'
     },
     xAxis: {
-        type: 'category'
+        categories: ['2016.03', '2016.05', '2016.07',  '2016.09', '2016.11', '2017.01', '2017.03'],
+        tickmarkPlacement: 'on',
+        title: {
+            enabled: false
+        }
     },
     yAxis: {
         title: {
-            text: 'Total percent market share'
+            text: 'Percent'
         }
-
     },
-    legend: {
-        enabled: false
+    tooltip: {
+        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} millions)<br/>',
+        split: true
     },
     plotOptions: {
-        series: {
-            borderWidth: 0,
-            dataLabels: {
-                enabled: true,
-                format: '{point.y:.1f}%'
+        area: {
+            stacking: 'percent',
+            lineColor: '#ffffff',
+            lineWidth: 1,
+            marker: {
+                lineWidth: 1,
+                lineColor: '#ffffff'
             }
         }
     },
-
-    tooltip: {
-        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
-    },
-
     series: [{
-        name: 'Brands',
-        colorByPoint: true,
-        data: serverdata
-        }]
+        name: 'America',
+        data: [95, 81, 82, 78, 70, 65, 61]
+    }, {
+        name: 'Europe',
+        data: [5, 12, 18, 20, 30, 35, 39]
+    }]
 });
 		
 		//End HighCharts ...
 		
 	};
 	$.ajax({
-		url:'pie',
+		url:'mission',
 		dataType:'json',
 		success:function(data){
 			display (data);
